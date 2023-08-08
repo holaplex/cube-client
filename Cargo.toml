@@ -1,0 +1,61 @@
+[package]
+edition = "2021"
+name = "cube-client"
+version = "0.1.1"
+authors = ["Cube Dev, Inc."]
+description = "Client for Cube.dev"
+homepage = "https://cube.dev"
+documentation = "https://cube.dev/docs"
+license = "Apache-2.0"
+resolver = "2"
+
+[dependencies.anyhow]
+version = "1.0"
+
+[dependencies.async-trait]
+version = "0.1.72"
+
+[dependencies.log]
+version = "0.4"
+
+[dependencies.reqwest]
+version = "^0.11"
+features = [
+    "json",
+    "multipart",
+    "rustls-tls",
+]
+default-features = false
+
+[dependencies.reqwest-middleware]
+version = "0.2.3"
+
+[dependencies.serde]
+version = "^1.0"
+
+[dependencies.serde_derive]
+version = "^1.0"
+
+[dependencies.serde_json]
+version = "^1.0"
+
+[dependencies.tokio]
+version = "1.29"
+features = ["time", "full"]
+
+[dependencies.url]
+version = "^2.4"
+
+[dependencies.uuid]
+version = "1.4"
+features = ["v4"]
+
+[dev-dependencies.log]
+version = "=0.4.11"
+
+[dev-dependencies.tokio]
+version = "1"
+features = ["macros"]
+
+[dev-dependencies.wiremock]
+version = "0.5"
