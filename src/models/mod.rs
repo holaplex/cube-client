@@ -32,3 +32,7 @@ pub mod v1_meta_response;
 pub use self::v1_meta_response::V1MetaResponse;
 pub mod v1_load_continue_wait;
 pub use self::v1_load_continue_wait::V1LoadContinueWait;
+pub mod v1_query;
+pub use self::v1_query::Query;
+pub mod v1_time;
+pub use self::v1_time::TimeGranularity;

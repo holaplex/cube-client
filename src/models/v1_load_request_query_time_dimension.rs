@@ -1,11 +1,11 @@
+use chrono::NaiveDate;
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct V1LoadRequestQueryTimeDimension {
-    #[serde(rename = "dimension")]
     pub dimension: String,
-    #[serde(rename = "granularity", skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub granularity: Option<String>,
     #[serde(rename = "dateRange", skip_serializing_if = "Option::is_none")]
-    pub date_range: Option<serde_json::Value>,
+    pub date_range: Option<(NaiveDate, NaiveDate)>,
 }
 
 impl V1LoadRequestQueryTimeDimension {

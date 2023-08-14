@@ -1,3 +1,5 @@
+use uuid::Uuid;
+
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct V1LoadRequestQueryFilterItem {
     #[serde(rename = "member", skip_serializing_if = "Option::is_none")]
@@ -18,6 +20,15 @@ impl V1LoadRequestQueryFilterItem {
             member: None,
             operator: None,
             values: None,
+            or: None,
+            and: None,
+        }
+    }
+    pub fn equals_member(member: &str, value: Uuid) -> Self {
+        Self {
+            member: Some(member.to_string()),
+            operator: Some("equals".to_string()),
+            values: Some(vec![value.to_string()]),
             or: None,
             and: None,
         }
