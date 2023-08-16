@@ -31,8 +31,8 @@ impl Query {
         self.query.measures = Some(measures);
         self
     }
-    pub fn dimensions(mut self, dimensions: Vec<&str>) -> Self {
-        self.query.dimensions = Some(dimensions.iter().map(|d| d.to_string()).collect());
+    pub fn dimensions(mut self, dimensions: Vec<String>) -> Self {
+        self.query.dimensions = Some(dimensions);
         self
     }
 
