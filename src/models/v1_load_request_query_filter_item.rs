@@ -1,5 +1,3 @@
-use uuid::Uuid;
-
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct V1LoadRequestQueryFilterItem {
     #[serde(rename = "member", skip_serializing_if = "Option::is_none")]
@@ -15,7 +13,7 @@ pub struct V1LoadRequestQueryFilterItem {
 }
 
 impl V1LoadRequestQueryFilterItem {
-    pub fn new() -> V1LoadRequestQueryFilterItem {
+    pub fn new() -> Self {
         V1LoadRequestQueryFilterItem {
             member: None,
             operator: None,
@@ -24,13 +22,29 @@ impl V1LoadRequestQueryFilterItem {
             and: None,
         }
     }
-    pub fn equals_member(member: &str, value: Uuid) -> Self {
-        Self {
-            member: Some(member.to_string()),
-            operator: Some("equals".to_string()),
-            values: Some(vec![value.to_string()]),
-            or: None,
-            and: None,
-        }
+
+    pub fn member(mut self, member: &str) -> Self {
+        self.member = Some(member.to_string());
+        self
+    }
+
+    pub fn operator(mut self, operator: &str) -> Self {
+        self.operator = Some(operator.to_string());
+        self
+    }
+
+    pub fn values(mut self, values: Vec<String>) -> Self {
+        self.values = Some(values);
+        self
+    }
+
+    pub fn or(mut self, or: Vec<serde_json::Value>) -> Self {
+        self.or = Some(or);
+        self
+    }
+
+    pub fn and(mut self, and: Vec<serde_json::Value>) -> Self {
+        self.and = Some(and);
+        self
     }
 }

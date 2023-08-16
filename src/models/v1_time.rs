@@ -1,6 +1,7 @@
 use std::fmt;
 
 pub enum TimeGranularity {
+    Minute,
     Hour,
     Day,
     Week,
@@ -11,6 +12,7 @@ pub enum TimeGranularity {
 impl fmt::Display for TimeGranularity {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
+            Self::Minute => write!(f, "minute"),
             Self::Hour => write!(f, "hour"),
             Self::Day => write!(f, "day"),
             Self::Week => write!(f, "week"),
