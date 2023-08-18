@@ -36,11 +36,13 @@ impl Query {
         self
     }
 
-    pub fn time_dimensions(mut self, dimension: V1LoadRequestQueryTimeDimension) -> Self {
-        self.query
-            .time_dimensions
-            .get_or_insert_with(Vec::new)
-            .push(dimension);
+    pub fn time_dimensions(mut self, dimension: Option<V1LoadRequestQueryTimeDimension>) -> Self {
+        if let Some(d) = dimension {
+            self.query
+                .time_dimensions
+                .get_or_insert_with(Vec::new)
+                .push(d);
+        }
         self
     }
 
